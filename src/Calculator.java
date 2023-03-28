@@ -1,13 +1,15 @@
 import java.util.Scanner;
 
 public class Calculator {
+
     public static void main(String[] args) {
         Converter converter = new Converter();
         String[] actions = {"+", "-", "/", "*"};
         String[] regexActions = {"\\+", "-", "/", "\\*"};
-        Scanner scn = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         System.out.print("Введите выражение: ");
-        String exp = scn.nextLine();
+        String exp = scanner.nextLine();
+        Main.calc(exp);
         exp = exp.replaceAll(" ", "");
         int actionIndex = -1;
         for (int i = 0; i < actions.length; i++) {
@@ -55,12 +57,19 @@ public class Calculator {
                 if (result < 1) {
                     throw new NumberFormatException("в римской системе нет отрицательных чисел");
                 }
-                System.out.println(converter.intToRoman(result));
+                System.out.print(converter.intToRoman(result));
             } else {
-                System.out.println(result);
+                System.out.print(result);
             }
         } else {
             throw new NumberFormatException("используются одновременно разные системы счисления");
         }
+    }
+}
+
+class Main {
+    public static String calc(String input) {
+        System.out.println(input);
+        return input;
     }
 }
